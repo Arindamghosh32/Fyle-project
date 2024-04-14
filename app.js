@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const Useroutes = require('./Routes/Useroutes');
+
 
 const app = express();
 const tet = path.resolve();
@@ -22,7 +24,7 @@ app.get("/",(req,res,next)=>{
     });
 });
 
-s
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
