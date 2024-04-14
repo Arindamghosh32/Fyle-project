@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<main>
+    <form method="get" action="/">
+        <div class="des">
+            <div class="sot">
+                <div class="tot">
+                    <h1><%= title%></h1>
+                    <div class="field">
+                        <div class="label-container">
+                            <label for="1">Enter gross annual income</label>
+                            <span class="tooltip" data-tooltip="Gross annual income is your total salary in a year before any deductions">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" name="annual" id="1" placeholder="Enter gross annual income"/>
+                            <i class="fas fa-exclamation-circle error-icon" id="error-icon-1"></i>
+                            <span class="tooltip error-tooltip" id="tooltip-1"></span> 
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="label-container">
+                            <label for="2">Enter extra income</label>
+                            <span class="tooltip" data-tooltip="Extra income is any income that is not part of your salary">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" name="extra" id="2" placeholder="Enter extra income"/>
+                            <i class="fas fa-exclamation-circle error-icon" id="error-icon-2" style="display: none;"></i>
+                            <span class="tooltip error-tooltip" id="tooltip-2"></span> 
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label-container">
+                            <label for="3">Enter age group</label>
+                            <span class="tooltip" data-tooltip="Enter the user's age">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                        <div class="input-container">
+                            <input type="number" name="age" id="3" placeholder="Enter age group"/>
+                            <i class="fas fa-exclamation-circle error-icon" id="error-icon-3" style="display: none;"></i>
+                            <span class="tooltip error-tooltip" id="tooltip-3"></span> 
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="label-container">
+                            <label for="4">Enter total applicable deductions</label>
+                            <span class="tooltip" data-tooltip="Here user enters its deductions based on government policy">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" name="gross" id="4" placeholder="Enter total applicable deductions"/>
+                            <i class="fas fa-exclamation-circle error-icon" id="error-icon-4" style="display: none;"></i>
+                            <span class="tooltip error-tooltip" id="tooltip-4"></span> 
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit">Submit Here</button>
+                </div>
+                <div class="lot">
+                    <img src="data:image/png;base64,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"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+
+
+<div id="myModal" class="modal">
+  
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="taxAmount"></p>
+  </div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', './calculate-tax', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                const modal = document.getElementById("myModal");
+                const span = document.getElementsByClassName("close")[0];
+                const taxAmount = document.getElementById("taxAmount");
+                taxAmount.textContent = "The tax you have to pay is: " + data.taxAmount;
+                modal.style.display = "block";
+                span.onclick = function() {
+                  modal.style.display = "none";
+                }
+                window.onclick = function(event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+            } else {
+                console.error('Request failed with status: ', xhr.status);
+            }
+        };
+        xhr.onerror = function () {
+            console.error('Request Failed');
+        };
+        const params = new URLSearchParams(formData).toString();
+        xhr.send(params);
+    });
+
+ 
+function validateAnnualIncome() {
+    const annualInput = document.getElementById('1');
+    const annualErrorIcon = document.getElementById('error-icon-1');
+    const annualValue = parseInt(annualInput.value);
+    let tooltip = document.getElementById('tooltip-1'); // Get the tooltip element
+    
+
+    if (isNaN(annualValue) || annualValue < 0 || annualInput.value.trim() === '') {
+        annualErrorIcon.style.display = 'inline-block';
+        annualErrorIcon.dataset.error = 'Annual income must be a positive number!';
+        
+        tooltip.innerText = annualErrorIcon.dataset.error; 
+        tooltip.style.opacity = '1'; 
+    } else {
+        annualErrorIcon.style.display = 'none';
+        
+        tooltip.style.opacity = '0'; 
+    }
+}
+
+
+const annualInput = document.getElementById('1');
+annualInput.addEventListener('input', validateAnnualIncome);
+annualInput.addEventListener('blur', validateAnnualIncome);
+
+
+const errorIcon = document.getElementById('error-icon-1');
+const errorTooltip = document.getElementById('tooltip-1');
+
+errorIcon.addEventListener('mouseover', function() {
+    const errorMessage = errorIcon.dataset.error;
+    if (errorMessage) {
+        errorTooltip.innerText = errorMessage;
+        errorTooltip.style.opacity = '1';
+    }
+});
+
+
+errorIcon.addEventListener('mouseleave', function() {
+    errorTooltip.style.opacity = '0';
+});
+
+
+
+
+    
+function validateExtraIncome() {
+    const extraInput = document.getElementById('2');
+    const extraErrorIcon = document.getElementById('error-icon-2');
+    const extraValue = parseInt(extraInput.value);
+    let tooltip = document.getElementById('tooltip-2'); 
+    
+
+    if (isNaN(extraValue) || extraValue < 0 || extraInput.value.trim() === '') {
+        extraErrorIcon.style.display = 'inline-block';
+        extraErrorIcon.dataset.error = 'Extra income must be a positive number!';
+        // Show tooltip
+        tooltip.innerText = extraErrorIcon.dataset.error; 
+        tooltip.style.opacity = '1'; 
+    } else {
+        extraErrorIcon.style.display = 'none';
+        
+        tooltip.style.opacity = '0'; 
+    }
+}
+
+
+const extraInput = document.getElementById('2');
+extraInput.addEventListener('input', validateExtraIncome);
+extraInput.addEventListener('blur', validateExtraIncome);
+
+const errorIcon2 = document.getElementById('error-icon-2');
+const errorTooltip2 = document.getElementById('tooltip-2');
+
+errorIcon2.addEventListener('mouseover', function() {
+    const errorMessage = errorIcon2.dataset.error;
+    if (errorMessage) {
+        errorTooltip2.innerText = errorMessage;
+        errorTooltip2.style.opacity = '1';
+    }
+});
+
+
+errorIcon2.addEventListener('mouseleave', function() {
+    errorTooltip2.style.opacity = '0';
+});
+
+
+   
+function validateAge() {
+    const ageInput = document.getElementById('3');
+    const ageErrorIcon = document.getElementById('error-icon-3');
+    const ageValue = parseInt(ageInput.value);
+    let tooltip = document.getElementById('tooltip-3'); 
+    
+   
+    if (isNaN(ageValue) || ageValue < 0 || ageValue > 100 || ageInput.value.trim() === '') {
+        ageErrorIcon.style.display = 'inline-block';
+        ageErrorIcon.dataset.error = 'Age must be a number between 0 and 100!';
+        
+        tooltip.innerText = ageErrorIcon.dataset.error; 
+        tooltip.style.opacity = '1'; 
+    } else {
+        ageErrorIcon.style.display = 'none';
+   
+        tooltip.style.opacity = '0'; 
+    }
+}
+
+
+const ageInput = document.getElementById('3');
+ageInput.addEventListener('input', validateAge);
+ageInput.addEventListener('blur', validateAge);
+
+const errorIcon3 = document.getElementById('error-icon-3');
+const errorTooltip3 = document.getElementById('tooltip-3');
+
+errorIcon3.addEventListener('mouseover', function() {
+    const errorMessage = errorIcon3.dataset.error;
+    if (errorMessage) {
+        errorTooltip3.innerText = errorMessage;
+        errorTooltip3.style.opacity = '1';
+    }
+});
+
+errorIcon3.addEventListener('mouseleave', function() {
+    errorTooltip3.style.opacity = '0';
+});
+
+function validateDeductionIncome() {
+    const deductionInput = document.getElementById('4');
+    const deductionErrorIcon = document.getElementById('error-icon-4');
+    const deductionValue = parseInt(deductionInput.value);
+    let tooltip = document.getElementById('tooltip-4'); 
+    
+    
+    if (isNaN(deductionValue) || deductionValue < 0 || deductionInput.value.trim() === '') {
+        deductionErrorIcon.style.display = 'inline-block';
+        deductionErrorIcon.dataset.error = 'Deduction income must be a positive number!';
+        
+        tooltip.innerText = deductionErrorIcon.dataset.error; 
+        tooltip.style.opacity = '1'; 
+    } else {
+        deductionErrorIcon.style.display = 'none';
+        
+        tooltip.style.opacity = '0'; 
+    }
+}
+
+
+const deductionInput = document.getElementById('4');
+deductionInput.addEventListener('input', validateDeductionIncome);
+deductionInput.addEventListener('blur', validateDeductionIncome);
+
+const errorIcon4 = document.getElementById('error-icon-4');
+const errorTooltip4 = document.getElementById('tooltip-4');
+
+errorIcon4.addEventListener('mouseover', function() {
+    const errorMessage = errorIcon4.dataset.error;
+    if (errorMessage) {
+        errorTooltip4.innerText = errorMessage;
+        errorTooltip4.style.opacity = '1';
+    }
+});
+
+errorIcon4.addEventListener('mouseleave', function() {
+    errorTooltip4.style.opacity = '0';
+});
+
+</script>
+</body>
+</html>
